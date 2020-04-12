@@ -72,8 +72,8 @@ def main():
             "DCN_leaky_relu": DeepConvNet(nn.LeakyReLU).to(device)
     }
     
-    #nets = nets1
-    nets = nets2
+    nets = nets1
+    #nets = nets2
     
     # Training setting
     loss_fn = nn.CrossEntropyLoss()
@@ -92,8 +92,8 @@ def main():
     df = pd.DataFrame.from_dict(acc)
     
     #df.to_csv('eeg_0025_0001.csv')
-    #print(df)
-    display(df)
+    print(df)
+    #display(df)
     return df
 
 # This train is for demo and recording accuracy
@@ -142,7 +142,8 @@ def train(nets, epoch_size, batch_size, loss_fn, optimizers):
 
         if epoch % 100 == 0:
             print('epoch : ', epoch, ' loss : ', loss.item())
-            display(pd.DataFrame.from_dict(accuracy).iloc[[epoch]])
+            print(pd.DataFrame.from_dict(accuracy).iloc[[epoch]])
+            #display(pd.DataFrame.from_dict(accuracy).iloc[[epoch]])
             print('')
         torch.cuda.empty_cache()
     showResult(title='Activation function comparison(EEGNet)'.format(epoch + 1), **accuracy)
@@ -152,4 +153,5 @@ def train(nets, epoch_size, batch_size, loss_fn, optimizers):
 if __name__ == '__main__':
     df1 = main()
     df1.max()
-    display(pd.DataFrame(df1.max(), columns=['best_acc']).T)
+    print(pd.DataFrame(df1.max(), columns=['best_acc']).T)
+    #display(pd.DataFrame(df1.max(), columns=['best_acc']).T)
