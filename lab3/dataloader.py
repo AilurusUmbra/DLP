@@ -5,15 +5,16 @@ import numpy as np
 import os
 import PIL
 
+
 def getData(mode):
     if mode == 'train':
-        img = pd.read_csv('train_img.csv')
-        label = pd.read_csv('train_label.csv')
-        return np.squeeze(img.values), np.squeeze(label.values)
+        img = pd.read_csv('train_img.csv', header=None, names=['img'])
+        label = pd.read_csv('train_label.csv', header=None, names=['label'])
     else:
-        img = pd.read_csv('test_img.csv')
-        label = pd.read_csv('test_label.csv')
-        return np.squeeze(img.values), np.squeeze(label.values)
+        img = pd.read_csv('test_img.csv', header=None, names=['img'])
+        label = pd.read_csv('test_label.csv', header=None, names=['label'])
+
+    return np.squeeze(img.values), np.squeeze(label.values)
 
 
 class RetinopathyDataset(data.Dataset):

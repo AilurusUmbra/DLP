@@ -49,7 +49,7 @@ if __name__ == '__main__':
     train_dataset = RetinopathyDataset('./data', 'train', augmentation=augmentation)
     test_dataset = RetinopathyDataset('./data', 'test')
     train_loader = DataLoader(train_dataset, batch_size=batch_size, pin_memory=True)
-    test_loader = DataLoader(test_dataset, batch_size=batch_size, pin_memory=True)
+    test_loader = DataLoader(test_dataset, batch_size=batch_size*4, pin_memory=True)
     
     to_train = False
 
