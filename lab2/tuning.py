@@ -82,7 +82,6 @@ class TrainEEG(tune.Trainable):
 
 
 if __name__ == "__main__":
-    return
     args = parser.parse_args()
     ray.init(address=args.ray_address, num_cpus=3 if args.smoke_test else None)
     #sched = ASHAScheduler(metric="mean_accuracy")
